@@ -43,6 +43,14 @@ class MolcasOrbitals:
         self.orbitals[mo_a] = rot_orb_a
         self.orbitals[mo_b] = rot_orb_b
 
+    # a dunder to get readeble representation of the object instance
     def __str__(self) -> str:
         return "class OrbRot with " + "#irreps=" + str(len(self.irreps)) + \
          ' and #mos in total=' + str(len(self.orbitals))
+    
+    # a dunder to get the #MOs present in the RasOrb file
+    def __len__(self) -> int:
+        return len(self.orbitals)
+
+
+    

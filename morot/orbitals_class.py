@@ -47,10 +47,18 @@ class MolcasOrbitals:
     def write_orbitals(self, file):
         with open(file, mode='a') as afile:
             afile.write("".join(self.output_header))
-            # the following code needs to be fixed 
             for orb in self.orbitals.keys():
-                line = "* ORBITAL    " + orb[0] + orb[1].rjust(5) + '\n' + "\n".join(self.orbitals[orb])
+                line = "* ORBITAL    " + orb[0] + orb[1].rjust(5) + '\n'
                 afile.write(line)
+                for idx, coeff in enumerate(self.orbitals[orb]):
+                    if (idx+1) % 5 == 0 and idx == len(self.orbitals[orb])-1:
+                        afile.write(coeff.rjust(22))
+                    elif (idx+1) % 5 == 0:
+                        afile.write(coeff.rjust(22) + "\n")
+                    else:
+                        afile.write(coeff.rjust(22))
+                afile.write("\n")
+            afile.write("".join(self.output_footer))
 
     # a dunder to get readable representation of the object instance
     def __str__(self) -> str:

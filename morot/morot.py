@@ -4,12 +4,19 @@ Python code to rotate by user-defined angles, two-by-two, molecular orbitals pro
 the RASSCF module of the OpenMOlcas quantum chemistry code.
 """
 
+
 from orbitals_class import MolcasOrbitals
+from functions import get_rasorb_file
+from functions import get_mo_pairs
 
 
 if __name__ == "__main__":
-    mo_output_file = "./data/orbitals.RasOrb"
-    myorbitals = []
-    with open(mo_output_file, 'r') as rfile:
-        myorbitals = rfile.readlines()
+    molcas_rasorb_file = get_rasorb_file()
 
+    myorbitals = []
+    with open(molcas_rasorb_file, 'r') as rfile:
+        myorbitals = rfile.readlines()
+    
+    berk = MolcasOrbitals(myorbitals)
+    myout = "orbitals.RotOrb"
+    berk.write_orbitals(myout)

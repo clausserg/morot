@@ -18,4 +18,5 @@ if __name__ == "__main__":
         myorbitals = rfile.readlines()
     
     berk = MolcasOrbitals(myorbitals)
-
+    myout = "orbitals.RotOrb"
+    berk.write_orbitals(myout)

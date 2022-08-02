@@ -2,7 +2,7 @@
 Module:
 orbitals_class.py
 
-This module implements the MolcasOrbitals class. The constructor requires a single parameter, namely the .RasOrb
+This module implements the MolcasOrbitals class. The constructor requires a single parameter, namely the *.RasOrb
 orbital file produced by a Molcas RASSCF calculation supplied in a list-of-strings format.
 """
 
@@ -42,8 +42,17 @@ class MolcasOrbitals:
                 float(orb_a[idx])*math.sin(angle)))
         self.orbitals[mo_a] = rot_orb_a
         self.orbitals[mo_b] = rot_orb_b
+    
+    # method to write MO data of the object instance to a file
+    def write_orbitals(self, file):
+        with open(file, mode='a') as afile:
+            afile.write("".join(self.output_header))
+            # the following code needs to be fixed 
+            for orb in self.orbitals.keys():
+                line = "* ORBITAL    " + orb[0] + orb[1].rjust(5) + '\n' + "\n".join(self.orbitals[orb])
+                afile.write(line)
 
-    # a dunder to get readeble representation of the object instance
+    # a dunder to get readable representation of the object instance
     def __str__(self) -> str:
         return "class OrbRot with " + "#irreps=" + str(len(self.irreps)) + \
          ' and #mos in total=' + str(len(self.orbitals))

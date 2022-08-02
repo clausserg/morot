@@ -51,6 +51,3 @@ class MolcasOrbitals:
     # a dunder to get the #MOs present in the RasOrb file
     def __len__(self) -> int:
         return len(self.orbitals)
-
-
-    

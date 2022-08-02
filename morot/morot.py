@@ -7,6 +7,7 @@ the RASSCF module of the OpenMOlcas quantum chemistry code.
 
 from orbitals_class import MolcasOrbitals
 from functions import get_rasorb_file
+from functions import get_mo_pairs
 
 
 if __name__ == "__main__":
@@ -17,6 +18,4 @@ if __name__ == "__main__":
         myorbitals = rfile.readlines()
     
     berk = MolcasOrbitals(myorbitals)
-    print(berk)
-    print(len(berk))
 

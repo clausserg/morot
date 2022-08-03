@@ -7,6 +7,7 @@ orbital file produced by a Molcas RASSCF calculation.
 """
 
 import math
+import os
 
 
 class MolcasOrbitals:
@@ -53,8 +54,12 @@ class MolcasOrbitals:
         self.orbitals[mo_b] = rot_orb_b
     
     # method to write MO data of the object instance to a file
-    def write_orbitals(self, file):
-        with open(file, mode='a') as afile:
+    def write_orbitals(self):
+        try:
+            os.unlink(self.out_orb_file)
+        except FileNotFoundError:
+            pass
+        with open(self.out_orb_file, mode='a') as afile:
             afile.write("".join(self.header))
             for orb in self.orbitals.keys():
                 line = "* ORBITAL    " + orb[0] + orb[1].rjust(5) + '\n'

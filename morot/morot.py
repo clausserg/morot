@@ -12,9 +12,4 @@ from functions import get_mo_pairs
 
 if __name__ == "__main__":
     molcas_rasorb_file = get_rasorb_file()
-
-#    myorbitals = []
-#    with open(molcas_rasorb_file, 'r') as rfile:
-#        myorbitals = rfile.readlines()
-    
     berk = MolcasOrbitals(molcas_rasorb_file)

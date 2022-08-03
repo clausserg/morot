@@ -25,6 +25,7 @@ class MolcasOrbitals:
         self.footer = self.output[self.output.index('#OCC\n'):]
         self.orbitals = self._get_orbitals()
 
+    # a protected method to extract the MOs and their tags from the provided RasOrb file
     def _get_orbitals(self):
         mo_indexes = [idx for idx, item in enumerate(self.output) if "ORBITAL" in item or "#OCC" in item]
         orbitals = {}
@@ -36,7 +37,7 @@ class MolcasOrbitals:
 
     # method to print out an orbital
     def print_orbital(self, irrep, mo_nr):
-        return self.orbitals[(str(irrep), str(mo_nr))]
+        print(self.orbitals[(str(irrep), str(mo_nr))])
 
     # method to rotate two orbitals orbitals
     def rotate(self, mo_a, mo_b, angle):

@@ -17,7 +17,13 @@ def get_rasorb_file():
         else:
             print("File not found! Please enter a valid path + file name.")
 
-def get_mo_pairs(nr_of_pairs, available_mos):
+def get_mo_pairs(available_mos):
+    while True:
+        try:
+            nr_of_pairs = int(input("How many MO pairs would you like to rotate?[e.g. 2]: "))
+            break
+        except ValueError:
+            print("{} is not a number, please try again.")
     mo_pairs = {}
     print("\nProvide with MO pair(s) to be rotated and corresponding angle(s) in the following format:\n #irrep, #orb1, #orb2, angle; meaning: in irrep #1, orb1 and orb2 will rotate by angle degrees.\n")
 

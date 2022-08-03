@@ -12,4 +12,8 @@ from functions import get_mo_pairs
 
 if __name__ == "__main__":
     molcas_rasorb_file = get_rasorb_file()
-    berk = MolcasOrbitals(molcas_rasorb_file)
+    MOs = MolcasOrbitals(molcas_rasorb_file)
+    rotate_me = get_mo_pairs(MOs)
+    for orbs, angle in rotate_me.items():
+        MOs.rotate(orbs[0], orbs[1], float(angle))
+    MOs.write_orbitals()

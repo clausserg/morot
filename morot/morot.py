@@ -13,10 +13,8 @@ from functions import get_mo_pairs
 if __name__ == "__main__":
     molcas_rasorb_file = get_rasorb_file()
 
-    myorbitals = []
-    with open(molcas_rasorb_file, 'r') as rfile:
-        myorbitals = rfile.readlines()
+#    myorbitals = []
+#    with open(molcas_rasorb_file, 'r') as rfile:
+#        myorbitals = rfile.readlines()
     
-    berk = MolcasOrbitals(myorbitals)
-    myout = "orbitals.RotOrb"
-    berk.write_orbitals(myout)
+    berk = MolcasOrbitals(molcas_rasorb_file)

@@ -74,6 +74,8 @@ class MolcasOrbitals:
                         afile.write(coeff.rjust(22))
                 afile.write("\n")
             afile.write("".join(self.footer))
+        if os.path.exists(self.out_orb_file):
+            print("\nFile '{}' was generated in the current folder!\n".format(self.out_orb_file))
 
     # a dunder to get readable representation of the object instance
     def __str__(self) -> str:

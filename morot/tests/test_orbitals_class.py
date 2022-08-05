@@ -14,6 +14,7 @@ def test_instance_attributes():
     MOs = MolcasOrbitals(input_mos)
     assert MOs.in_orb_file == input_mos and MOs.out_orb_file == "orbitals.RotOrb" and \
         len(MOs.irreps) == 8 and len(MOs.orbs_per_irrep) == 8 and \
-            len(MOs.orbitals) == 710
+            len(MOs.orbitals) == 710 and len(MOs.header) == 11 and \
+                len(MOs.footer) == 388
 
 

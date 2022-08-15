@@ -79,8 +79,7 @@ class MolcasOrbitals:
 
     # a dunder to get readable representation of the object instance
     def __str__(self) -> str:
-        return "class OrbRot with " + "#irreps=" + str(len(self.irreps)) + \
-         ' and #mos in total=' + str(len(self.orbitals))
+        return str(len(self.orbitals)) + " molecular orbitals spanning " + str(len(self.irreps)) + " irreps"
     
     # a dunder to get the #MOs present in the RasOrb file
     def __len__(self) -> int:

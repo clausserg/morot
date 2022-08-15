@@ -8,7 +8,7 @@ from morot.orbitals_class import MolcasOrbitals
 
 def test_instance_attributes_sym_d2h():
     """
-    Testing some instance variables with orbitals obtained for berkelocene, symmetry D2h
+    Testing some instance variables with orbitals obtained for berkelocene, symmetry=D2h
     """
     input_mos = "../data/orbitals.RasOrb"
     MOs = MolcasOrbitals(input_mos)
@@ -27,3 +27,12 @@ def test_instance_attributes_sym_c1():
         len(MOs.irreps) == 1 and len(MOs.orbs_per_irrep) == 1 and \
             len(MOs.orbitals) == 46 and len(MOs.header) == 11 and \
                 len(MOs.footer) == 33
+
+def test_class_str_dunder_d2h():
+    """
+    Testing the __str__() dunder method
+    """
+    input_mos = "../data/orbitals.RasOrb"
+    MOs = MolcasOrbitals(input_mos) 
+    assert MOs.__str__() == "710 molecular orbitals spanning 8 irreps"
+

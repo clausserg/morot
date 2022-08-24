@@ -9,7 +9,7 @@ import pytest
 
 @pytest.fixture
 def get_file() -> str:
-    return "./data/dioxygen.RasOrb"
+    return "morot/data/dioxygen.RasOrb"
 
 def test_len_dunder_c1(get_file) :
     """
